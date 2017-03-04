@@ -221,7 +221,7 @@
 
     </div>
     <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
-    <script src="C:\Users\SAJ\Desktop\sajid web\bs-support-amin\bs-support-amin\RemoteDoorAdminWeb\assets\js"></script>
+    <script src="C:\Users\SAJ\Desktop\sajid web\bs-support-amin\bs-support-amin\RemoteDoorAdminWeb\assets\js\Firebase.js"></script>
     <!--  Jquery Core Script -->
     <script src="assets/js/jquery-1.10.2.js"></script>
     <!--  Core Bootstrap Script -->
@@ -245,16 +245,19 @@
      var oaddress = document.getElementById('address');
       var oemail = document.getElementById('email');
        var ophone = document.getElementById('Phone');
+       var uid="";
    // var messageResults = document.getElementById('email');
 
     // Save data to firebase
     function savedata()
     {
-      var dbname = oname.value;
+        
+var dbname = oname.value;
 var dbphone = ophone.value;
 var dbaddress = oaddress.value;
 var dbemail = oemail.value;
-      messagesRef.push({name:dbname,phone:dbphone,address:dbaddress,email:dbemail});
+var ouid = uid
+      messagesRef.push({uid:ouid,name:dbname,phone:dbphone,address:dbaddress,email:dbemail});
       alert("data Inserted Successfully");  
     //  messageField.value = '';
     }

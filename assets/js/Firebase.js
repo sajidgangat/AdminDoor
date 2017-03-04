@@ -1,6 +1,6 @@
 
 
-
+//var database = firebase.database();
   // Initialize Firebase
   var config = 
   {
