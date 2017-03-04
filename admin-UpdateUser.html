@@ -53,10 +53,10 @@
                     <a>
                         <div class="alert alert-danger">
                             <i class="fa fa-user fa-4x"></i>
-                            <span class="label label-info">User Requests</span>
+                            <span class="label label-info">Search Requests</span>
                             <span class="label label-danger"></span>
                             <p>
-                               Enter user name: <br>
+                               Enter Name, Ph Number or Email: <br>
                                <input type="text" id="find" >
                                <input type="button" onclick="findval()" value="Search">
 
@@ -242,8 +242,10 @@ function findval(){
        
         //var c= a  b;
          var username = snapshot.val().name;
+         var cemail = snapshot.val().email;
+         var cphone = snapshot.val().phone;
             console.log(nvalue);
-       if (username == nvalue)
+       if (username == nvalue || cemail == nvalue || cphone == nvalue )
        {
             var username = snapshot.val().name;
             var phone = snapshot.val().phone;  
