@@ -1,8 +1,4 @@
-﻿<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
+﻿
 <html lang="en">
 <!--<![endif]-->
 <head>
@@ -54,59 +50,25 @@
         <div class="container">
             <div class="row noti-div">
                 <div class="col-lg-3 col-md-3 col-sm-3  text-center">
-                    <a href="admin-user-list.html">
+                    <a>
                         <div class="alert alert-danger">
                             <i class="fa fa-user fa-4x"></i>
                             <span class="label label-info">User Requests</span>
                             <span class="label label-danger"></span>
                             <p>
-                                Total Requests from users
+                               Enter user name: <br>
+                               <input type="text" id="find" >
+                               <input type="button" onclick="findval()" value="Search">
 
                             </p>
                         </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3  text-center">
-                    <a href="admin-open-tickets.html">
-                        <div class="alert alert-success">
-                            <i class="fa fa-folder-open-o fa-4x"></i>
-                            <span class="label label-warning">Register new user</span>
-                            <span class="label label-success"></span>
-                            <p>
-                                Register new users for application
-
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                
 
 
-                <div class="col-lg-3 col-md-3 col-sm-3  text-center">
-                    <a href="admin-support-cat.html">
-                        <div class="alert alert-warning">
-                            <i class="fa fa-briefcase fa-4x"></i>
-                            <span class="label label-success">Activate/Deactivate User</span>
-                            <span class="label label-warning"></span>
-                            <p>
-                                Activate or deactivate the users based on their subscription
-
-                            </p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 text-center">
-                    <a href="admin-user-list.html">
-                        <div class="alert alert-info">
-                            <i class="fa fa-recycle fa-4x"></i>
-
-                            <span class="label label-danger">Add Doors to user's account</span>
-                            <span class="label label-info"></span>
-                            <p>
-                                Add the number of doors to user's account
-                            </p>
-                        </div>
-                    </a>
-                </div>
+                
+                
             </div>
 
 
@@ -118,7 +80,7 @@
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-sm-9 alert alert-info">
 
-                    <h3 class=" text-center">Compose New Notification</h3>
+                    <h3 class=" text-center">Update Profile</h3>
                    <div class="hr-div"> <hr /></div>
                     <form>
 
@@ -128,24 +90,25 @@
                      
                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
                             <label>Please Enter Name</label>
-                            <input type="text" id="name" class="form-control" required="" placeholder="Enter Name " />
+                       
+                            <input type="text" id="lbl1" name="lbl1" value="" class="form-control" placeholder="" />
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
                             <label>Please Enter Address</label>
-                            <input type="text" id="address" class="form-control" required="" placeholder="Enter Address " />
+                            <input type="text" id="address" class="form-control" required="" placeholder="" />
                         </div>
                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
                             <label>Please Enter Phone Number</label>
-                            <input type="text" id="Phone" class="form-control" required="" placeholder="Enter Phone Number " />
+                            <input type="text" id="Phone" class="form-control" required="" placeholder="" />
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
                             <label>Please Enter Email</label>
-                            <input type="text" id="email" class="form-control" required="" placeholder="Enter Email " />
+                            <input type="text" id="email" class="form-control" required="" placeholder="" />
                         </div>
                       
 
                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                            <button type="button" onclick="savedata()" class="btn btn-primary"> Create User </button>
+                            <button type="button" onclick="update()" class="btn btn-primary"> Update User </button>
                         </div>
                     </form>
 
@@ -221,13 +184,14 @@
 
     </div>
     <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
-    <script src="C:\Users\SAJ\Desktop\sajid web\bs-support-amin\bs-support-amin\RemoteDoorAdminWeb\assets\js"></script>
+    <script src="C:\Users\SAJ\Desktop\sajid web\bs-support-amin\bs-support-amin\RemoteDoorAdminWeb\assets\js\Firebase.js"></script>
     <!--  Jquery Core Script -->
     <script src="assets/js/jquery-1.10.2.js"></script>
     <!--  Core Bootstrap Script -->
     <script src="assets/js/bootstrap.js"></script>
 
     <script>
+
     document.querySelector('#sign-out').addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -241,16 +205,16 @@
             
     var messagesRef = new Firebase('https://locationdatabase-210d5.firebaseio.com/name');
     
-    var oname = document.getElementById('name');
-     var oaddress = document.getElementById('address');
-      var oemail = document.getElementById('email');
-       var ophone = document.getElementById('Phone');
+   // var oname = document.getElementById('name');
+   //  var oaddress = document.getElementById('address');
+   //   var oemail = document.getElementById('email');
+   //    var ophone = document.getElementById('Phone');
    // var messageResults = document.getElementById('email');
-
     // Save data to firebase
-    function savedata()
+    function update()
     {
-      var dbname = oname.value;
+
+var dbname = oname.value;
 var dbphone = ophone.value;
 var dbaddress = oaddress.value;
 var dbemail = oemail.value;
@@ -260,9 +224,44 @@ var dbemail = oemail.value;
     }
     </script>
 
+    <script>
 
-    
-    
+function findval(){
+     //var newtext = document.getElementById('find');
+     // console.log(newtext)
+     var messagesRef = new Firebase('https://locationdatabase-210d5.firebaseio.com/name');
+
+  var messageResults = document.getElementById('name');
+
+     messagesRef.limitToLast(10).on('child_added', function (snapshot) {
+        var data = snapshot.val();
+         //console.log(snapshot.val());
+       //var b = snapshot.childbyId("name").numChildren();
+         var newtext = document.getElementById('find');
+          var nvalue = newtext.value;
+       
+        //var c= a  b;
+         var username = snapshot.val().name;
+            console.log(nvalue);
+       if (username == nvalue)
+       {
+            var username = snapshot.val().name;
+            var phone = snapshot.val().phone;  
+            var address = snapshot.val().address;  
+            var email = snapshot.val().email; 
+           // console.log(username);
+            $("#lbl1").val(username)
+            $("#address").val(address);
+            $("#email").val(email);
+            $("#Phone").val(phone);
+       }
+       
+     });
+
+ }
+ 
+   
+</script>
 
     <!--  Jquery Core Script -->
     <script src="assets/js/jquery-1.10.2.js"></script>
