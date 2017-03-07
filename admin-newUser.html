@@ -127,8 +127,12 @@
                      
                      
                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                            <label>Please Enter Name</label>
-                            <input type="text" id="name" class="form-control" required="" placeholder="Enter Name " />
+                            <label>Please Enter Email</label>
+                            <input type="text" id="email" class="form-control" required="" placeholder="Enter Name " />
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <label>Please Enter Password</label>
+                            <input type="password" id="password" class="form-control" required="" placeholder="Enter Address " />
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
                             <label>Please Enter Address</label>
@@ -139,8 +143,8 @@
                             <input type="text" id="Phone" class="form-control" required="" placeholder="Enter Phone Number " />
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                            <label>Please Enter Email</label>
-                            <input type="text" id="email" class="form-control" required="" placeholder="Enter Email " />
+                            <label>Please Enter name</label>
+                            <input type="text" id="name" class="form-control" required="" placeholder="Enter Email " />
                         </div>
                       
 
@@ -221,12 +225,21 @@
 
     </div>
     <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
-    <script src="C:\Users\SAJ\Desktop\sajid web\bs-support-amin\bs-support-amin\RemoteDoorAdminWeb\assets\js\Firebase.js"></script>
     <!--  Jquery Core Script -->
     <script src="assets/js/jquery-1.10.2.js"></script>
     <!--  Core Bootstrap Script -->
     <script src="assets/js/bootstrap.js"></script>
-
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDHHA-KaQmEvElBRwqaZpwjvGl3m8FSS8Y",
+    authDomain: "locationdatabase-210d5.firebaseapp.com",
+    databaseURL: "https://locationdatabase-210d5.firebaseio.com",
+    storageBucket: "locationdatabase-210d5.appspot.com",
+    messagingSenderId: "342545487415"
+  };
+  firebase.initializeApp(config);
+</script> 
     <script>
     document.querySelector('#sign-out').addEventListener('click', function(e) {
       e.preventDefault();
@@ -237,34 +250,149 @@
 
 
 
+
+
+
+
+<script>
+
+ function savedata()
+ {
+alert("savedata")
+var ref = new Firebase("https://locationdatabase-210d5.firebaseio.com");
+var email = document.getElementById('email').value;
+var password = document.getElementById('password').value;
+
+firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) 
+{
+          var errorCode = error.code;
+         var errorMessage = error.message;
+});
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+   uid = user.uid;
+  // alert(uid);
+   savedataTodb(uid)
+  }
+});
+
+
+
+
+ }
+</script>
+
+
+
     <script>
             
-    var messagesRef = new Firebase('https://locationdatabase-210d5.firebaseio.com/name');
+    var messagesRef = new Firebase('https://locationdatabase-210d5.firebaseio.com/RegisteredUsers');
     
     var oname = document.getElementById('name');
      var oaddress = document.getElementById('address');
       var oemail = document.getElementById('email');
        var ophone = document.getElementById('Phone');
-       var uid="";
    // var messageResults = document.getElementById('email');
 
     // Save data to firebase
-    function savedata()
+    function savedataTodb(uid)
     {
-        
+       
+        var newuid = uid;
+        // alert(newuid);
 var dbname = oname.value;
 var dbphone = ophone.value;
 var dbaddress = oaddress.value;
 var dbemail = oemail.value;
-var ouid = uid
-      messagesRef.push({uid:ouid,name:dbname,phone:dbphone,address:dbaddress,email:dbemail});
+      messagesRef.push({uid:newuid,name:dbname,phone:dbphone,address:dbaddress,email:dbemail});
       alert("data Inserted Successfully");  
+      //call the data again
+      messagesRef.limitToLast(1).on('child_added', function (snapshot) {
+        var data = snapshot.val();
+      //  console.log(snapshot.val());
+        var id = snapshot.key();
+        var email = snapshot.val().email;
+        var mainid = uid;
+        doordata(id,email,mainid)
+       });
+      alert("data Inserted Successfully");  
+
+
+      firebase.auth().signOut();
+      
     //  messageField.value = '';
     }
+
+    function doordata(id,email,mainid)
+    {
+         var ref = new Firebase('https://locationdatabase-210d5.firebaseio.com/doors');
+        alert(email);
+        var newid = id;
+          var newdbname= email;
+          var mainid = mainid;
+          var activation="false";
+
+
+ var postData = {
+
+    custId: newid,
+    name: newdbname,
+    status: status
+  };
+
+  // Get a key for a new Post.
+  var newPostKey = firebase.database().ref().child('door').push().key;
+  var date = "2 march 2017"
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  var updates = {};
+  updates['/door/' + newPostKey] = postData;
+  updates['/user-door/' + newPostKey + '/cust_ids/' + newid] = postData;
+
+  return firebase.database().ref().update(updates);
+
+
+}
+        //  var customer_id
+        //  newmessagesRef.push({CustId:newid,name:newdbname,status:status});
+         // messagesRef.limitToLast(1).on('child_added', function (snapshot) {
+       // var data = snapshot.val();
+      //  console.log(snapshot.val());
+      //  var id = snapshot.key();
+      //  var email = snapshot.val().email;
+      //    accesslist(id,email,mainid)
+         //cust(newid)
+         // });
+    
+    
+  /*  function accesslist(id,email,mainid)
+    {
+        alert("access list called");
+         var ref = new Firebase('https://locationdatabase-210d5.firebaseio.com/doors/list');
+        alert(email);
+        var newid = id;
+          var newdbname = email;
+          var status="close";
+          var user2 ="not assigned"
+
+        alert(mainid);
+
+          var key= mainid;
+    var newData={
+        id: key,
+        access_date: "222"
+    }
+
+    firebase.database().ref().push(newData);
+
+
+        //  var customer_id
+         // newmessagesRef.push({CustId:newid,User1:newdbname,User2:user2});
+         //cust(newid)
+    }*/
     </script>
 
-
-    
     
 
     <!--  Jquery Core Script -->
