@@ -135,7 +135,7 @@
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
                             <label>Please Enter Password</label>
-                            <input type="password" id="password" class="form-control" required="" placeholder="Enter password " />
+                            <input type="password" id="password" class="form-control" required="" placeholder="Enter Address " />
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
                             <label>Please Enter Address</label>
@@ -147,7 +147,7 @@
                         </div>
                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
                             <label>Please Enter name</label>
-                            <input type="text" id="name" class="form-control" required="" placeholder="Enter name " />
+                            <input type="text" id="name" class="form-control" required="" placeholder="Enter Email " />
                         </div>
                       
 
@@ -174,7 +174,8 @@
                     </div>
                     <div class="alert alert-danger text-center">
                         <h3>Import Information</h3>
-                       
+                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                         Nulla pretium lectus vel justo iaculis blandit.  
                     </div>
                     
                 </div>
@@ -260,7 +261,7 @@
 
  function savedata()
  {
-//alert("savedata")
+alert("savedata")
 var ref = new Firebase("https://locationdatabase-210d5.firebaseio.com");
 var email = document.getElementById('email').value;
 var password = document.getElementById('password').value;
@@ -328,29 +329,40 @@ var dbemail = oemail.value;
 
     function doordata(id,email,mainid)
     {
-         var ref = new Firebase('https://locationdatabase-210d5.firebaseio.com/doors');
-        //alert(email);
-        var newid = id;
+         var ref = new Firebase('https://locationdatabase-210d5.firebaseio.com');
+        alert(email);
+        var newuid = id;
           var newdbname= email;
           var mainid = mainid;
           var activation="false";
+var date = "2 march 2017"
+ var data = "true"
+ var doorname="front door"
+  var newPostKey = firebase.database().ref().child('door').push().key;
+  var postdoordata={
+        name: doorname,
+        Cust_Id : mainid
 
-
- var postData = {
-
-    custId: newid,
-    name: newdbname,
-    status: status
   };
 
+  //
+ var postData = {
+
+   data : data
+  };
+
+ var custdata={
+    cust_id : mainid
+ };
   // Get a key for a new Post.
-  var newPostKey = firebase.database().ref().child('door').push().key;
-  var date = "2 march 2017"
+ 
+ // var date = "2 march 2017"
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
   var updates = {};
-  updates['/door/' + newPostKey] = postData;
-  updates['/user-door/' + newPostKey + '/cust_ids/' + newid] = postData;
+  updates['/RegisteredUsers/'+ newuid+ '/doors/' +newPostKey ] = postData;
+  updates['/Doors/' + newPostKey + '/custIds/' + mainid  ] = postdoordata;
+  //updates['/Doors/' + newPostKey + '/CustIds/' + mainid ] = custdata;
 
   return firebase.database().ref().update(updates);
 
