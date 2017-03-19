@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+ 
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Support Admin</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME CSS -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!-- Google	Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css' />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="head">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <a href="index.html">
+                        <h2><span>Remote Doorway</span></h2>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 text-center" >
+                    
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <h4><span>Call:</span> +xx-xxxx-xxx-xxx</h4>
+                    <h4><span>E-mail:</span> byteme@domain.com</h4>
+                     <div class="col-lg-3 col-md-3 col-sm-3">
+                    <a href="index.html" class=" label label-danger"><strong>LOGOUT / SIGNOUT</strong> </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-9 ">
+
+                     <h3>All User List <span class="label label-danger" New :  /span><span class="label label-danger" id="no"></span></h3><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                      <div class="hr-div"> <hr /></div>
+                                                  
+                               <section id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-9 alert alert-info">
+
+                    <h3 class=" text-center">Compose New New Door</h3>
+                   <div class="hr-div"> <hr /></div>
+                    <form>
+
+
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4">
+                            <label>Please Select Name of the Owner</label>
+                            <select id="opn" onchange="run()">
+                               <!-- <option id="newname"></option> -->
+                               
+                            </select>
+                        </div>
+                        
+                       
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <label>Enter The Door Name</label>
+                            <input type="text" class="form-control" id="doorname" required="required" placeholder="Enter Subject Of Ticket" />
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <label>Please Enter Access Date</label>
+                            <textarea class="form-control" id="adate" rows="2"></textarea>
+                        </div>
+                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <label>Please Enter Install Date</label>
+                            <textarea class="form-control" id="idate" rows="2"></textarea>
+                        </div>
+                            <input type="hidden" id="srt" placeholder="get value on option select"><br>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                            <button type="button" onclick="savedata()" class="btn btn-primary">Create Door</button>
+                        </div>
+                    </form>
+
+                </div>
+               
+            </div>
+        </div>
+    </section>
+                                <div>
+                                   
+                                    </div>
+                                    
+                 
+
+                </div>
+                
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <a href="index.html" class=" label label-danger"><strong>LOGOUT / SINGOUT</strong> </a>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active">Quick Links
+                        </a>
+
+                        <a href="admin-dashboard.html" class="list-group-item">My Dashboard</a>
+                        <a href="admin-user-list.html" class="list-group-item">New Users</a>
+                        <a href="admin-open-tickets.html" class="list-group-item">Open Tickets</a>
+                        <a href="admin-support-cat.html" class="list-group-item">Support Categories</a>
+                         <a href="admin-user-list.html" class="list-group-item">All Users</a>
+                        <a href="admin-change-password.html" class="list-group-item">Change Password</a>
+
+
+                    </div>
+                    <div class="alert alert-danger text-center">
+                        <h3>Import Information</h3>
+                      
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+   <div id="footer">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <h3>Physical Location</h3>
+                    <p>
+                        <i>Addresss :</i> 125/890 , Cenntenial college,
+                        <br />
+                        Toronto.
+                         <br />
+                       &copy; 2014 byteme | by <a href="" style="color:#fff;" target="_blank">bytme.com</a>
+                   
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <h3>Get Quick Help</h3>
+                    <h4><span>Call: </span>+01-xxxx-xxx-xxx</h4>
+                    <h4><span>E-mail: </span>info@domain.com</h4>
+                    <h4><span>Skype:</span> info</h4>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+
+                    <h3>Subscribe For Updates</h3>
+                    <form>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" required="required" placeholder="Your Email" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <button type="submit"id="sign-out" class="btn btn-danger">Click To Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+        <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+    <!--  Jquery Core Script -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!--  Core Bootstrap Script -->
+    <script src="assets/js/bootstrap.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAmNG5LOwZdeUyiAM7b4kmZy6NyA7ZXo8Q",
+    authDomain: "chatapp-8f220.firebaseapp.com",
+    databaseURL: "https://chatapp-8f220.firebaseio.com",
+    storageBucket: "chatapp-8f220.appspot.com",
+    messagingSenderId: "994448641337"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script>
+
+ var messagesRef = new Firebase('https://chatapp-8f220.firebaseio.com/UserInfo');
+
+  var messageResults = document.getElementById('results');
+
+     messagesRef.limitToLast(10).on('child_added', function (snapshot) {
+        var data = snapshot.val();
+        //console.log(snapshot.val());
+       var b = snapshot.child("name").numChildren();
+        var id = snapshot.key();
+       // alert(id);
+        
+        //var c= a  b;
+       
+       var username = snapshot.val().name;
+        var phone = snapshot.val().phone;  
+        var address = snapshot.val().address;  
+        var email = snapshot.val().Email; 
+        console.log(b);               
+        console.log(username);
+        console.log(phone);
+        console.log(address);
+        console.log(email);
+      
+         $("#no").html(b);
+            //$("#list1").html(email);
+             // $("#list2").html(address);
+               //$("#list3").html(phone);
+               
+
+var op= "<option value="+ id + ">" + email + "</option>" ;
+
+      
+            $("#opn").append(op);
+       
+         
+       
+       
+    });
+  
+  // ...
+
+</script>
+
+
+
+
+
+
+
+<script>
+//calling functionn 
+function savedata()
+{
+
+ var e = document.getElementById("srt").value
+ //var strUser = e.options[e.selectedIndex].value;
+ alert(e);
+var messagesRef = new Firebase('https://chatapp-8f220.firebaseio.com/UserInfo/');
+
+  var messageResults = document.getElementById('results');
+
+     messagesRef.limitToLast(10).on('child_added', function (snapshot) {
+        var data = snapshot.val();
+        //console.log(snapshot.val());
+       var b = snapshot.child("name").numChildren();
+        var id = snapshot.key();
+       // alert(id);
+        
+        //var c= a  b;
+       
+       var username = snapshot.val().name;
+        var phone = snapshot.val().phone;  
+        var address = snapshot.val().address;  
+        var email = snapshot.val().email; 
+        console.log(b);               
+        console.log(username);
+        console.log(phone);
+        console.log(address);
+        console.log(email);
+
+     });
+     
+
+//--------------------------------------------------------
+ var oname = document.getElementById('doorname').value;
+ var Adates = document.getElementById('adate').value;
+  var Idate = document.getElementById('idate').value;
+
+ var ref = new Firebase('https://chatapp-8f220.firebaseio.com/UserInfo/');
+ alert(ref);    
+        //alert(email);
+       // var newid = id;
+         
+          var activation="false";
+
+
+ var postData = {
+
+   
+    AccessDate : Adates,
+    DoorName : oname,
+    InstallDate : Idate
+  };
+
+  var statusdata = {
+   status : 0
+  };
+
+   var logs = { 
+    status : 0
+  };
+
+  // Get a key for a new Post.
+  var newPostKey = firebase.database().ref().child('door').push().key;
+  var date = "2 march 2017"
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+ alert("the new post key is " + newPostKey);
+var updates = {};
+  
+        
+  updates['UserInfo/' + e + '/Doors/Owner/' + newPostKey] = postData;
+  updates['status/' + newPostKey ] = statusdata;
+   updates['Logs/' + newPostKey+ '/' + e ] = logs;
+
+  return firebase.database().ref().update(updates);
+  
+   
+     
+}
+
+</script>
+<script>
+
+function run() {
+    document.getElementById("srt").value = document.getElementById("opn").value;
+}
+</script>
+
+
+</body>
+</html>
