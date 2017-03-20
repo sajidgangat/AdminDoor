@@ -310,7 +310,7 @@ var messagesRef = new Firebase('https://chatapp-8f220.firebaseio.com/UserInfo/')
   };
 
   var statusdata = {
-   status : 0
+   CurrentStatus : 0
   };
 
    var logs = { 
@@ -319,6 +319,7 @@ var messagesRef = new Firebase('https://chatapp-8f220.firebaseio.com/UserInfo/')
 
   // Get a key for a new Post.
   var newPostKey = firebase.database().ref().child('door').push().key;
+  
   var date = "2 march 2017"
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
@@ -327,7 +328,8 @@ var updates = {};
   
         
   updates['UserInfo/' + e + '/Doors/Owner/' + newPostKey] = postData;
-  updates['status/' + newPostKey ] = statusdata;
+  updates['Status/' + newPostKey ] = statusdata;
+   //   updates['Logs/' + newPostKey + '/' + e +'/' + newuserlogid + '/'] = logs;
    updates['Logs/' + newPostKey+ '/' + e ] = logs;
 
   return firebase.database().ref().update(updates);
